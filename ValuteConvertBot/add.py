@@ -1,6 +1,6 @@
 import telebot
 from config import keys, TOKEN
-from ClassExcept import ConvertionException, ValuteConvertor
+from extensions import ConvertionException, ValuteConvertor
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -31,7 +31,7 @@ def convert(message: telebot.types.Message):
 
         quote, base, amount = values
         # Возврашаем из еxception значения
-        converted_amount, conversion_rate = ValuteConvertor.convert(base, quote,  amount, )
+        converted_amount, conversion_rate = ValuteConvertor.get_price(base, quote,  amount, )
 
     except ConvertionException as e:
         bot.reply_to(message, f'Ошибка пользователя \n{e}')

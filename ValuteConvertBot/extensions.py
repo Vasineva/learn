@@ -9,7 +9,7 @@ class ConvertionException(Exception):
 # Определяем класс для конвертации валют
 class ValuteConvertor:
     @staticmethod
-    def convert (base: str, quote: str,  amount: str):
+    def get_price(base: str, quote: str,  amount: str):
         # Проверка на равенство валют, они не могут быть одинаковыми
         if quote == base:
             raise ConvertionException(f'Невозмо перевести одинаковые валюты {base}.')

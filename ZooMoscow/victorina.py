@@ -21,7 +21,7 @@ def start_victorina(chat_id, bot):
         user_scores[chat_id] = {'score': 0, 'current_question': 0}
     # Если пользователь только начал викторину
     if user_scores[chat_id]['current_question'] == 0:
-        with open('Pig/victorina.jpg', 'rb') as photo:
+        with open('PIC/victorina.jpg', 'rb') as photo:
             bot.sendPhoto(chat_id, photo=photo)
         bot.sendMessage(chat_id, "Давайте узнаем, какое ваше тотемное животное! Отвечайте на вопросы викторины.",
                         parse_mode='HTML')

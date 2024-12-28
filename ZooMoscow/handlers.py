@@ -80,7 +80,7 @@ def handle_message(msg, bot):
     # Команды для отзыва
     elif command == 'Оставить отзыв':
         logging.info(f"Пользователь {chat_id} начал оставлять отзыв.")
-        with open('Pig/feedbacks.jpg', 'rb') as photo:
+        with open('PIC/feedbacks.jpg', 'rb') as photo:
             bot.sendPhoto(chat_id, photo=photo)
         bot.sendMessage(chat_id, "Пожалуйста, оставьте свой отзыв:", reply_markup=ReplyKeyboardMarkup(
             keyboard=[[KeyboardButton(text='Отмена')]], resize_keyboard=True))
@@ -97,7 +97,7 @@ def handle_message(msg, bot):
     # Команда программы опеки
     elif command == 'Посмотреть программу опеки':
         logging.info(f"Пользователь {chat_id} запросил программу опеки.")
-        with open('Pig/programm.jpg', 'rb') as photo:
+        with open('PIC/programm.jpg', 'rb') as photo:
             bot.sendPhoto(chat_id, photo=photo)
         keyboard = ReplyKeyboardMarkup(
             keyboard=[[KeyboardButton(text='Узнать свое тотемное животное')],

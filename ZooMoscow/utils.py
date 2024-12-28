@@ -3,6 +3,7 @@
 включая создание клавиатуры, сохранение отзывов
 и ответ администратору на вопросы пользователей.
 
+
 Основные функции:
 - show_start_keyboard: Отправляет приветственное сообщение с клавиатурой
   для взаимодействия и прикрепляет изображение.
@@ -22,7 +23,7 @@ def show_start_keyboard(bot, chat_id):
                   [KeyboardButton(text='Оставить отзыв')]],
         resize_keyboard=True
     )
-    with open('Pig/start.jpg', 'rb') as photo:
+    with open('PIC/start.jpg', 'rb') as photo:
         bot.sendPhoto(chat_id, photo=photo)
     bot.sendMessage(chat_id, 'Привет! Я — бот Московского зоопарка! Здесь вы можете пройти увлекательную викторину, '
                               'чтобы узнать свое тотемное животное, а также получить информацию о программе '
