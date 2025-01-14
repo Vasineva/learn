@@ -5,7 +5,9 @@ class NewsList(ListView):
     # Указываем модель, объекты которой мы будем выводить
     model = Post
     # Поле, которое будет использоваться для сортировки объектов
-    ordering = 'name'
+    queryset = Post.objects.filter(
+        post_type='NW'
+    ).order_by('-created_at')
     # Указываем имя шаблона, в котором будут все инструкции о том,
     # как именно пользователю должны быть показаны наши объекты
     template_name = 'news.html'
@@ -20,3 +22,4 @@ class NewsDetail(DetailView):
     template_name = 'news_1.html'
     # Название объекта, в котором будет выбранный пользователем продукт
     context_object_name = 'news_1'
+    pk_url_kwarg = 'id'
