@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 article = 'AR'
 news = 'NW'
@@ -13,6 +14,12 @@ POST_TYPES = [
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="author_profile")
     rating = models.IntegerField(default=0)
+
+    def __str__(self):
+        # Возвращаем имя пользователя, связанного с автором
+        return self.user.username
+
+
 
     def update_rating(self):
         # Суммарный рейтинг статей автора * 3
@@ -30,10 +37,14 @@ class Author(models.Model):
         self.rating = post_ratings + comment_ratings + post_comment_ratings
         self.save()
 
+
 # Модель Category
 class Category(models.Model):
     name = models.CharField(max_length=64, unique=True)
-    
+
+    def __str__(self):
+        return self.name
+
 
 # Модель Post
 class Post(models.Model):
@@ -56,6 +67,9 @@ class Post(models.Model):
     # предварительный просмотр
     def preview(self):
         return self.content[:124] + '...' if len(self.content) > 124 else self.content
+
+    def get_absolute_url(self):
+        return reverse('news_detail', args=[str(self.id)])
 
 # Промежуточная модель для связи «многие ко многим»
 class PostCategory(models.Model):

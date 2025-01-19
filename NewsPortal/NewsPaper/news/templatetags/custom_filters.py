@@ -1,3 +1,7 @@
+"""
+Данный код определяет пользовательский фильтр censor для Django,
+который заменяет часть нежелательных слов на символы *.
+"""
 from django import template
 
 register = template.Library()
